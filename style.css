@@ -1,0 +1,21 @@
+html {
+    font-size: clamp(14px, 1.5vw, 20px);
+}
+
+body {
+    font-family: "Inconsolata", sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+header h1 {
+    font-size: 1.25rem;
+}
+
+header img {
+    width: clamp(17px, 2vw, 30px);
+    margin-inline-end: 0.5rem;
+}
