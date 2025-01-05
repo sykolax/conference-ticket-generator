@@ -24,13 +24,28 @@
       </div>
 
       <form action="">
+        <label for="avatar-upload">Upload Avatar</label>
         <div class="form-group">
-          <label for="avatar-upload">Upload Avatar</label>
-          <input
-            id="avatar-upload"
-            type="file"
-            accept=".jpg, .jpeg, .png, image/jpeg, image/png"
-          />
+          <div class="file-drop-zone-wrapper">
+            <div class="file-drop-zone">
+              <input
+                id="avatar-upload"
+                type="file"
+                accept=".jpg, .jpeg, .png, image/jpeg, image/png"
+                title=""
+              />
+              <button>
+                <img src="assets/images/icon-upload.svg" alt="Upload svg" />
+              </button>
+              <p>Drag and drop or click to upload</p>
+            </div>
+          </div>
+          <p class="upload-info">
+            <img
+              src="assets/images/icon-info.svg"
+              alt="Info icon with i and circle around it"
+            />Upload your photo(JPG or PNG, max size: 500kB).
+          </p>
         </div>
         <div class="form-group">
           <label for="name">Full Name</label>

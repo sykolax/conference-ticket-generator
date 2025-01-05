@@ -1,3 +1,7 @@
+* {
+    margin: 0;
+}
+
 html {
     font-size: clamp(14px, 1.5vw, 20px);
 }
@@ -9,6 +13,7 @@ body {
 header {
     display: flex;
     justify-content: center;
+    margin: clamp(10px, 1vw, 20px);
 }
 
 header h1 {
@@ -18,4 +23,108 @@ header h1 {
 header img {
     width: clamp(17px, 2vw, 30px);
     margin-inline-end: 0.5rem;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: clamp(300px, 45vw, 800px);
+    margin: clamp(20px, 3vw, 60px) auto;
+    text-align: center;
+}
+
+main h2 {
+    font-size: 2.25rem;
+}
+
+.content-header {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 1vw, 12px);
+    justify-content: space-around;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding-block: clamp(10px, 3vw, 55px);
+    padding-inline: clamp(50px, 10vw, 120px);
+    text-align: start;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-block-start: clamp(10px, 1.5vw, 20px);
+}
+
+.form-group label {
+    font-size: 1rem;
+    margin-block-end: clamp(3px, 0.4vw, 10px);
+}
+
+input {
+    font-size: 0.9rem;
+    padding: clamp(7px, 0.7vw, 12px);
+    border-radius: 8px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input[type="submit"] {
+    font-size: 0.9rem;
+    font-family: inherit;
+    padding-block:  clamp(7px, 0.9vw, 14px);
+}
+
+.file-drop-zone-wrapper {
+    border: 2px solid;
+    border-radius: 8px;
+    padding: 3px;
+}
+
+.file-drop-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(3px, 1vw, 16px);
+    width: 100%;
+    box-sizing: border-box;
+    padding-inline: clamp(20px, 2vw, 50px);
+    padding-block: clamp(10px, 1vw, 15px);
+    border: 1px dashed;
+    border-radius: 6px;
+}
+
+.file-drop-zone button {
+    border-radius: 7px;
+    padding-inline: clamp(3px, 0.5vw, 9px);
+    padding-block: clamp(2px, 0.3vw, 6px);
+}
+
+.upload-info {
+    font-size: 0.6rem;
+    display: flex;
+    gap: 0.3rem;
+    margin-top: clamp(4px, 0.3vw, 6px);
+}
+
+.upload-info img {
+    width: 0.7rem;
+}
+
+@media (max-width: 900px) {
+    form {
+        padding-inline: clamp(5px ,1.2vw, 15px);
+    }
+
+    input {
+        padding: clamp(10px, 1.2vw, 20px);
+    }
+
+    .file-drop-zone {
+        padding-inline: clamp(10px, 1vw, 20px);
+    }
 }
