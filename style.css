@@ -1,9 +1,11 @@
 :root {
-    --neutral0: hsl(0, 0%, 100%);
-    --neutral300: hsl(252, 6%, 83%);
-    --neutral500: hsl(245, 15%, 58%);
-    --neutral700: hsl(245, 19%, 35%); 
-    --neutral900: hsl(248, 70%, 10%);
+    --neutral0: 0, 0%, 100%;
+    --neutral300: 252, 6%, 83%;
+    --neutral500: 245, 15%, 58%;
+    --neutral700: 245, 19%, 35%;
+    --neutral900: 248, 70%, 10%;
+    --orange500: 7, 88%, 67%;
+    --orange700: 7, 71%, 60%;
 }
 
 * {
@@ -12,21 +14,23 @@
 
 html {
     font-size: clamp(14px, 1.5vw, 20px);
-    color: var(--neutral0);
+    color: hsl(var(--neutral0));
 }
 
 p {
-    color: var(--neutral300);
+    color: hsl(var(--neutral300));
 }
 
 body {
     font-family: "Inconsolata", sans-serif;
     background-image: url("assets/images/background-desktop.png");
     background-size: cover;
+    overflow: hidden;
 }
 
 .background-lines {
     position: absolute;
+    z-index: -1;
 }
 
 #background-vertical-lines {
@@ -98,13 +102,18 @@ form {
 }
 
 .upload-text {
-    color: var(--neutral300);
+    color: hsl(var(--neutral300));
 }
 
 input {
     font-size: 0.9rem;
+    font-family: inherit;
+    font-size: 0.9rem;
     padding: clamp(7px, 0.7vw, 12px);
     border-radius: 12px;
+    border: 1px solid hsl(var(--neutral0), 50%);
+    background-color: hsl(var(--neutral700), 30%);
+    color: hsl(var(--neutral0), 80%);
 }
 
 input[type="file"] {
@@ -114,7 +123,11 @@ input[type="file"] {
 input[type="submit"] {
     font-size: 0.9rem;
     font-family: inherit;
+    font-weight: 900;
+    color: hsl(var(--neutral900));
     padding-block:  clamp(7px, 0.9vw, 14px);
+    background-color: hsl(var(--orange500));
+    border: none;
 }
 
 .file-drop-zone-wrapper {
@@ -124,6 +137,8 @@ input[type="submit"] {
 }
 
 .file-drop-zone {
+    color: hsl(var(--neutral300));
+    font-size: 0.9rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -132,14 +147,17 @@ input[type="submit"] {
     box-sizing: border-box;
     padding-inline: clamp(20px, 2vw, 50px);
     padding-block: clamp(10px, 1vw, 15px);
-    border: 1px dashed;
+    border: 1px dashed hsl(var(--neutral500), 80%);
     border-radius: 9px;
+    background-color: hsl(var(--neutral700), 30%);
 }
 
 .file-drop-zone button {
     border-radius: 7px;
     padding-inline: clamp(3px, 0.5vw, 9px);
     padding-block: clamp(2px, 0.3vw, 6px);
+    border: 1px solid hsl(var(--neutral0), 30%);
+    background-color: hsl(var(--neutral700), 60%);
 }
 
 .upload-info {
