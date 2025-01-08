@@ -150,9 +150,10 @@ input[type="submit"] {
     border: 1px dashed hsl(var(--neutral500), 80%);
     border-radius: 9px;
     background-color: hsl(var(--neutral700), 30%);
+    cursor: pointer;
 }
 
-.file-drop-zone button {
+.file-drop-zone img {
     border-radius: 7px;
     padding-inline: clamp(3px, 0.5vw, 9px);
     padding-block: clamp(2px, 0.3vw, 6px);
