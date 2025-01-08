@@ -1,13 +1,47 @@
+:root {
+    --neutral0: hsl(0, 0%, 100%);
+    --neutral300: hsl(252, 6%, 83%);
+    --neutral500: hsl(245, 15%, 58%);
+    --neutral700: hsl(245, 19%, 35%); 
+    --neutral900: hsl(248, 70%, 10%);
+}
+
 * {
     margin: 0;
 }
 
 html {
     font-size: clamp(14px, 1.5vw, 20px);
+    color: var(--neutral0);
+}
+
+p {
+    color: var(--neutral300);
 }
 
 body {
     font-family: "Inconsolata", sans-serif;
+    background-image: url("assets/images/background-desktop.png");
+    background-size: cover;
+}
+
+.background-lines {
+    position: absolute;
+}
+
+#background-vertical-lines {
+    top: 0;
+    left: 0;
+}
+
+#background-squiggly-line-bottom {
+    top: 50%;
+    left: 0;
+}
+
+#background-squiggly-line-top {
+    top: 10%;
+    right: 0;
 }
 
 header {
@@ -61,6 +95,10 @@ form {
 .form-group label {
     font-size: 1rem;
     margin-block-end: clamp(3px, 0.4vw, 10px);
+}
+
+.upload-text {
+    color: var(--neutral300);
 }
 
 input {
