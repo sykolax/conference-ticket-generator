@@ -51,7 +51,7 @@ body {
 header {
     display: flex;
     justify-content: center;
-    margin: clamp(10px, 1vw, 20px);
+    margin-top: clamp(10px, 2vw, 30px);
 }
 
 header h1 {
