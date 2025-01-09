@@ -143,6 +143,7 @@ input[type="submit"] {
     padding: clamp(7px, 4vw, 20px);
     background-color: hsl(var(--orange500));
     border: none;
+    margin-block-start: clamp(12px, 2vh, 30px);
 }
 
 .file-drop-zone-wrapper {
