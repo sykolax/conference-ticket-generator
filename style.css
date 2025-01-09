@@ -24,8 +24,9 @@ p {
 body {
     font-family: "Inconsolata", sans-serif;
     background-image: url("assets/images/background-desktop.png");
+    background-position: center center;
     background-size: cover;
-    overflow: hidden;
+    background-repeat: no-repeat;
 }
 
 .background-lines {
@@ -36,16 +37,26 @@ body {
 #background-vertical-lines {
     top: 0;
     left: 0;
+    width: 100%;
+    object-fit: none;
+}
+
+#background-circle {
+    right: -15%;
+    bottom: 20%;
+    width: 40%;
 }
 
 #background-squiggly-line-bottom {
-    top: 50%;
+    top: 70%;
     left: 0;
+    width: 90%;
 }
 
 #background-squiggly-line-top {
-    top: 10%;
+    top: 3%;
     right: 0;
+    width: 35%;
 }
 
 header {
@@ -179,10 +190,6 @@ input[type="submit"] {
 
 .upload-info img {
     width: 0.7rem;
-}
-
-@media screen (min-width: 600px) {
-    
 }
 
 @media screen (max-width: 900px) {
