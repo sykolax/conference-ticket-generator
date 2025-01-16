@@ -48,7 +48,7 @@ body {
 header {
     display: flex;
     justify-content: center;
-    margin-block: clamp(10px, 5vh, 50px);
+    margin-block: clamp(10px, 4vh, 50px);
 }
 
 header h1 {
@@ -64,7 +64,7 @@ main {
     display: flex;
     flex-direction: column;
     width: clamp(300px, 95vw, 550px);
-    margin: clamp(20px, 3vw, 60px) auto;
+    margin: clamp(20px, 3vh, 60px) auto;
     text-align: center;
 }
 
@@ -117,7 +117,7 @@ input[type="text"], input[type="email"] {
     font-size: 1.25rem;
 }
 
-input[type="file"] {
+#avatar-upload {
     display: none;
 }
 
@@ -129,7 +129,7 @@ input[type="submit"] {
     padding: clamp(7px, 4vw, 20px);
     background-color: hsl(var(--orange500));
     border: none;
-    margin-block-start: clamp(12px, 2vh, 30px);
+    margin-block-start: clamp(5px, 0.7vh, 14px);
 }
 
 .file-drop-zone-wrapper {
@@ -155,12 +155,21 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-.file-drop-zone img {
+.upload-icon {
     border-radius: 7px;
-    padding-inline: clamp(3px, 0.5vw, 9px);
-    padding-block: clamp(2px, 0.3vw, 6px);
+    padding-inline: clamp(3px, 0.7vw, 9px);
+    padding-block: clamp(2px, 0.5vw, 10px);
     border: 1px solid hsl(var(--neutral0), 30%);
     background-color: hsl(var(--neutral700), 60%);
+}
+
+.avatar-uploaded-image {
+    border-radius: 7px;
+    border: 1px solid hsl(var(--neutral0), 30%);
+    width: 15%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: top;
 }
 
 .upload-text {
