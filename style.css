@@ -32,7 +32,7 @@ body {
     background-position: 
     bottom 20% left -70%,
     center right,
-    top right,
+    top 3% right,
     center,
     center;
     background-size: 
@@ -182,19 +182,18 @@ input[type="submit"] {
 @media (min-width: 600px) {
 
     body {
-        min-height: 100vh;
-    }
-
-    #background-circle {
-        width: 15%;
-        right: 15%;
-        bottom: 30%;
-    }
-
-    #background-squiggly-line-bottom {
-        width: 50%;
-        bottom: 0;
-        left: -4%;
+        background-size: 
+        50%,
+        20%,
+        30%,
+        cover,
+        cover;
+        background-position:
+        bottom 20% left -8%, 
+        top 50% right 20%,
+        top 5% right,
+        center, 
+        center;
     }
 
     .content-header p {
@@ -212,14 +211,24 @@ input[type="submit"] {
 
 @media (min-width: 1200px) {
 
-    header h1 {
-        font-size: 1.25rem;
+    body {
+        background-size: 
+        45%,
+        15%,
+        30%,
+        cover,
+        cover;
+
+        background-position:
+        bottom 20% left -6%, 
+        top 60% right 22%,
+        top 5% right,
+        center, 
+        center;
     }
 
-    #background-circle {
-        width: 10%;
-        right: 15%;
-        bottom: 30%;
+    header h1 {
+        font-size: 1.25rem;
     }
 
     .content-header p {
