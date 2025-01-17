@@ -152,7 +152,29 @@ input[type="submit"] {
     border: 1px dashed hsl(var(--neutral500), 80%);
     border-radius: 9px;
     background-color: hsl(var(--neutral700), 30%);
-    cursor: pointer;
+}
+
+.file-modify-button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.file-modify-button {
+    background-color: hsl(var(--neutral500), 40%);
+    border-radius: 3px;
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    color: hsl(var(--neutral0), 80%);
+    padding: clamp(2px, 0.7vh, 9px);
+}
+
+.non-clickable {
+    pointer-events: none;
+}
+
+.clickable {
+    pointer-events: auto;
 }
 
 .upload-icon {
