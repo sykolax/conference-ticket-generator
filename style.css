@@ -154,6 +154,19 @@ input[type="submit"] {
     background-color: hsl(var(--neutral700), 30%);
 }
 
+input:focus {
+    outline: 1px hsl(var(--neutral500)) solid;
+    outline-offset: 2px;
+    box-shadow: 0 0 10px hsl(var(--neutral300));
+}
+
+.dragging {
+    outline: 1px hsl(var(--neutral500)) solid;
+    outline-offset: 2px;
+    box-shadow: 0 0 15px hsl(var(--neutral300));
+    background-color: hsl(var(--neutral700), 80%);
+}
+
 .file-modify-button-container {
     display: flex;
     gap: 10px;

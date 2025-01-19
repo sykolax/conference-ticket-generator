@@ -26,10 +26,12 @@ fileDropZone.addEventListener('click', () => {
 fileDropZone.addEventListener('dragover', (event) => {
     event.preventDefault();
     event.stopPropagation();
+    fileDropZone.classList.add('dragging');
 });
 
 fileDropZone.addEventListener('drop', (event) => {
     console.log('dropped!');
+    fileDropZone.classList.remove('dragging');
     event.preventDefault(); 
     event.stopPropagation();
 
