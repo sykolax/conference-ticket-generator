@@ -4,6 +4,8 @@ const fileInput = document.querySelector("#avatar-upload");
 const fileDropZoneImage = document.querySelector(".file-drop-zone img");
 const fileDropZoneMessage = document.querySelector(".file-drop-zone p");
 
+let isDropZoneActive = true;
+
 let avatar;
 
 class User {
@@ -15,7 +17,11 @@ class User {
     }
 }
 
-fileDropZone.addEventListener('click', triggerInputFile);
+fileDropZone.addEventListener('click', () => {
+    if (isDropZoneActive) {
+        triggerInputFile();
+    }
+});
 
 fileDropZone.addEventListener('dragover', (event) => {
     event.preventDefault();
@@ -75,7 +81,8 @@ function clearFileDropZone() {
 
 function renderModifyButtons() {
     // remove click event 
-    fileDropZone.removeEventListener("click", triggerInputFile);
+    // fileDropZone.removeEventListener("click", triggerInputFile);
+    isDropZoneActive = false;
 
     // class names for file modification
     const modifyBtnClass = 'file-modify-button';
@@ -97,15 +104,19 @@ function renderModifyButtons() {
     fileDropZoneMessage.replaceWith(btnContainer);
 
     fileChangeBtn.addEventListener('click', triggerInputFile);
-    fileRemoveBtn.addEventListener('click', restoreDropZone);
+    fileRemoveBtn.addEventListener('click', (event) => {
+        event.stopPropagation(); // to prevent the parent div to be clicked
+        restoreDropZone();
+    });
 }
 
 function restoreDropZone() {
         //revert back to the original file drop zone setting 
         const avatarImg = document.querySelector('.avatar-image');
+        const btnContainer = document.querySelector('.file-modify-button-container');
         avatarImg.replaceWith(fileDropZoneImage);
         btnContainer.replaceWith(fileDropZoneMessage);
-        fileDropZone.addEventListener("click", triggerInputFile);
+        isDropZoneActive = true;
 }
 
 function allowclick(element) {
