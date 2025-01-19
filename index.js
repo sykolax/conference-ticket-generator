@@ -43,7 +43,6 @@ fileDropZone.addEventListener('drop', (event) => {
             const fileReader = new FileReader();
 
             fileReader.onload = (event) => {
-                clearFileDropZone();
                 displayAvatar(event.target.result);
                 renderModifyButtons();
              }
@@ -66,18 +65,6 @@ fileInput.addEventListener('change', (event) => {
         fileReader.readAsDataURL(avatar);
     }
 });
-
-function clearFileDropZone() {
-    const avatarImage = document.querySelector(".avatar-image");
-    const btnContainer = document.querySelector(".file-modify-button-container");
-
-    if (avatarImage) {
-        avatarImage.replaceWith(fileDropZoneImage);
-    }
-    if (btnContainer) {
-        btnContainer.replaceWith(fileDropZoneMessage);
-    }
-}
 
 function renderModifyButtons() {
     // remove click event 
@@ -117,14 +104,6 @@ function restoreDropZone() {
         avatarImg.replaceWith(fileDropZoneImage);
         btnContainer.replaceWith(fileDropZoneMessage);
         isDropZoneActive = true;
-}
-
-function allowclick(element) {
-    element.classList.add('clickable');
-}
-
-function disableClick(element) {
-    element.classList.add('non-clickable');
 }
 
 function triggerInputFile() {

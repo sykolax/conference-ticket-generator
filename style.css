@@ -169,14 +169,6 @@ input[type="submit"] {
     padding: clamp(2px, 0.7vh, 9px);
 }
 
-.non-clickable {
-    pointer-events: none;
-}
-
-.clickable {
-    pointer-events: auto;
-}
-
 .upload-icon {
     border-radius: 7px;
     padding-inline: clamp(3px, 0.7vw, 9px);
