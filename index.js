@@ -15,32 +15,67 @@ class User {
     }
 }
 
-fileDropZone.addEventListener("click", (event) => {
-    // ignore children click
-    if (event.target === fileDropZone || event.target === fileDropZoneImage) {
-        triggerInputFile();
-    } 
-})
+fileDropZone.addEventListener('click', triggerInputFile);
 
-fileInput.addEventListener("change", (event) => {
+fileDropZone.addEventListener('dragover', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+});
+
+fileDropZone.addEventListener('drop', (event) => {
+    console.log('dropped!');
+    event.preventDefault(); 
+    event.stopPropagation();
+
+    const files = event.dataTransfer.files;
+
+    if (files.length) {
+        // Warning
+        const file = files[0];
+        
+        if (file.type.startsWith('image/')) {
+            const fileReader = new FileReader();
+
+            fileReader.onload = (event) => {
+                clearFileDropZone();
+                displayAvatar(event.target.result);
+                renderModifyButtons();
+             }
+             fileReader.readAsDataURL(file);
+
+        }
+    }
+});
+
+fileInput.addEventListener('change', (event) => {
     avatar = event.target.files[0];
     if (avatar) {
         const fileReader = new FileReader();
 
         fileReader.onload = (event) => {
             displayAvatar(event.target.result);
+            renderModifyButtons();
         }
 
         fileReader.readAsDataURL(avatar);
-        renderModifyButtons();
-    } else {
-        // Display previous 
     }
-})
+});
+
+function clearFileDropZone() {
+    const avatarImage = document.querySelector(".avatar-image");
+    const btnContainer = document.querySelector(".file-modify-button-container");
+
+    if (avatarImage) {
+        avatarImage.replaceWith(fileDropZoneImage);
+    }
+    if (btnContainer) {
+        btnContainer.replaceWith(fileDropZoneMessage);
+    }
+}
 
 function renderModifyButtons() {
-    // make file drop zone non clickable
-    disableClick(fileDropZone);
+    // remove click event 
+    fileDropZone.removeEventListener("click", triggerInputFile);
 
     // class names for file modification
     const modifyBtnClass = 'file-modify-button';
@@ -61,21 +96,16 @@ function renderModifyButtons() {
     btnContainer.appendChild(fileChangeBtn);
     fileDropZoneMessage.replaceWith(btnContainer);
 
-    // parent div is non clickable now, button click needs to be abled
-    allowclick(fileRemoveBtn);
-    allowclick(fileChangeBtn);
+    fileChangeBtn.addEventListener('click', triggerInputFile);
+    fileRemoveBtn.addEventListener('click', restoreDropZone);
+}
 
-    fileChangeBtn.addEventListener('click', () => {
-        triggerInputFile();
-    });
-
-    fileRemoveBtn.addEventListener('click', () => {
+function restoreDropZone() {
         //revert back to the original file drop zone setting 
-        const avatarImg = document.querySelector('.avatar-uploaded-image');
+        const avatarImg = document.querySelector('.avatar-image');
         avatarImg.replaceWith(fileDropZoneImage);
         btnContainer.replaceWith(fileDropZoneMessage);
-        allowclick(fileDropZone);
-    })  
+        fileDropZone.addEventListener("click", triggerInputFile);
 }
 
 function allowclick(element) {
@@ -94,9 +124,9 @@ function displayAvatar(avatar) {
     const avatarImg = document.createElement('img');
     const currentImg = document.querySelector('.file-drop-zone img');
     avatarImg.src = avatar;
-    avatarImg.classList.add('avatar-uploaded-image');
+    avatarImg.classList.add('avatar-image');
     currentImg.replaceWith(avatarImg);
     //current thing
 }
 
-// TODO : 1) file type check 2) Submit button -> construct a user object 
+// TODO : 1) file type check 2) Submit button -> construct a user object 3) Highlight drop zone when drag over

@@ -185,7 +185,7 @@ input[type="submit"] {
     background-color: hsl(var(--neutral700), 60%);
 }
 
-.avatar-uploaded-image {
+.avatar-image {
     border-radius: 7px;
     border: 1px solid hsl(var(--neutral0), 30%);
     width: 15%;
@@ -237,6 +237,14 @@ input[type="submit"] {
 
     input[type="submit"] {
         font-size: 1.25rem; 
+    }
+
+    .upload-text {
+        font-size: 1rem;
+    }
+
+    .upload-info {
+        font-size: 0.7rem;
     }
 }
 
