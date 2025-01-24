@@ -1,21 +1,62 @@
+const MAX_FILE_SIZE = 1000 * 500; //500kB
+
+const ticketForm = document.getElementById("ticketForm");
+
 const fileDropZone = document.querySelector(".file-drop-zone");
 const fileInput = document.querySelector("#avatar-upload");
+const nameInput = document.querySelector("#name");
+const emailInput = document.querySelector("#email");
+const githubInput = document.querySelector("#github-username");
+const submitButton = document.querySelector("#submit");
 // original file drop zone setting
 const fileDropZoneImage = document.querySelector(".file-drop-zone img");
 const fileDropZoneMessage = document.querySelector(".file-drop-zone p");
+const fileuploadInfoMessage = document.querySelector(".upload-info");
+
+const inputs = [nameInput, emailInput, githubInput];
+const errorMessages = document.querySelectorAll(".error-message");
 
 let isDropZoneActive = true;
 
-let avatar;
-
 class User {
     constructor(name, email, github, avatar) {
-        this.name = name;
-        this.email = email;
-        this.github = github;
-        this.avatar = avatar;
+        this.name = name || null;
+        this.email = email || null; 
+        this.github = github || null;
+        this.avatar = avatar || null;
     }
 }
+
+const userInfo = new User();
+console.log(userInfo);
+
+submit.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const infoKeys = ["name", "email", "github"];
+
+    console.log("hi!");
+    if (!userInfo["avatar"]) {
+        fileDropZone.classList.add('error-box');
+        errorMessages[0].textContent = "Please upload your photo";
+    } else {
+        fileDropZone.classList.remove('error-box');
+    }
+
+    inputs.forEach((input, index) => {
+        console.log(input, index);
+        const value = input.value;
+        if (isEmpty(value)) {
+            input.classList.add('error-box');
+            errorMessages[index + 1].textContent = "Please fill out this form";
+        } else {
+            input.classList.remove('error-box');
+            errorMessages[index + 1].textContent = "";
+            userInfo[infoKeys[index]] = value;
+        }
+    
+    });
+});
 
 fileDropZone.addEventListener('click', () => {
     if (isDropZoneActive) {
@@ -30,43 +71,64 @@ fileDropZone.addEventListener('dragover', (event) => {
 });
 
 fileDropZone.addEventListener('drop', (event) => {
-    console.log('dropped!');
     fileDropZone.classList.remove('dragging');
     event.preventDefault(); 
     event.stopPropagation();
 
-    const files = event.dataTransfer.files;
-
-    if (files.length) {
-        // Warning
-        const file = files[0];
-        
-        if (file.type.startsWith('image/')) {
-            const fileReader = new FileReader();
-
-            fileReader.onload = (event) => {
-                displayAvatar(event.target.result);
-                renderModifyButtons();
-             }
-             fileReader.readAsDataURL(file);
-
-        }
-    }
+    const file = event.dataTransfer.files[0];
+    processNewAvatar(file);
 });
 
 fileInput.addEventListener('change', (event) => {
-    avatar = event.target.files[0];
-    if (avatar) {
-        const fileReader = new FileReader();
+    const file = event.target.files[0];
+    processNewAvatar(file);
+});
 
-        fileReader.onload = (event) => {
-            displayAvatar(event.target.result);
-            renderModifyButtons();
-        }
-
-        fileReader.readAsDataURL(avatar);
+emailInput.addEventListener('change', () => {
+    // Check if it's valid
+    if (!validateEmail(emailInput.value)) {
+        emailInput.classList.add('error-box');
+        errorMessages[2].textContent = "Please enter valid email address";
+    } else {
+        emailInput.classList.remove('error-box');
+        errorMessages[2].textContent = "";
     }
 });
+
+emailInput.addEventListener('valid', () =>{
+    emailInput.classList.remove('error-box');
+});
+
+function isEmpty(fieldValue) {
+    return !fieldValue.trim().length;
+}
+
+function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
+function processNewAvatar(file) {
+    // avatar = input file from user
+    if (file.type.startsWith('image/')) {
+        if (file.size > MAX_FILE_SIZE) {
+            fileDropZone.classList.add('error-box');
+            errorMessages[0].textContent ="The selected file must not be larger than 500 kB";
+            return;
+        } else {
+            errorMessages[0].textContent = "";
+            fileDropZone.classList.remove('error-box');
+        }
+        const reader = new FileReader();
+
+        reader.onload = (event) => {
+            displayAvatar(event.target.result);
+            renderModifyButtons();
+            userInfo["avatar"] = event.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+}
 
 function renderModifyButtons() {
     // remove click event 

@@ -23,7 +23,7 @@
         <p>Secure your spot at next year's biggest coding conference.</p>
       </div>
 
-      <form action="">
+      <form id="ticketForm" action="">
         <div class="form-group" tabindex="0">
           <label for="avatar-upload">Upload Avatar</label>
           <div class="file-drop-zone">
@@ -47,21 +47,25 @@
             />
             Upload your photo(JPG or PNG, max size: 500kB).
           </p>
+          <p class="error-message"></p>
         </div>
         <div class="form-group">
           <label for="name">Full Name</label>
-          <input type="text" id="name" />
+          <input type="text" id="name" required />
+          <p class="error-message"></p>
         </div>
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email" />
+          <input type="email" id="email" required />
+          <p class="error-message"></p>
         </div>
         <div class="form-group">
           <label for="github-username">GitHub Username</label>
-          <input type="text" id="github-username" />
+          <input type="text" id="github-username" required />
+          <p class="error-message"></p>
         </div>
         <div class="form-group"></div>
-        <input type="submit" value="Generate My Ticket" />
+        <input type="submit" id="submit" value="Generate My Ticket" />
       </form>
     </main>
     <script src="index.js"></script>

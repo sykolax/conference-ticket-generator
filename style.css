@@ -211,6 +211,20 @@ input:focus {
     margin-top: clamp(4px, 0.3vw, 6px);
 }
 
+.error-message {
+    margin-block-start: clamp(2px, 0.5vh, 5px);
+    color: hsl(var(--orange500));
+    font-size: 0.9rem;
+}
+
+.hidden {
+    display: hidden;
+}
+
+.error-box {
+    border: 1px hsl(var(--orange500)) solid;
+}
+
 .upload-info img {
     width: 0.7rem;
 }
