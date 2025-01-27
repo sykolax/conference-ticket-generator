@@ -92,6 +92,10 @@ input[type="submit"] {
     background-color: hsl(var(--neutral700), 30%);
 }
 
+.file-drop-zone:hover {
+    background-color: hsl(var(--neutral500), 30%);
+}
+
 input:focus {
     outline: 1px hsl(var(--neutral500)) solid;
     outline-offset: 2px;
