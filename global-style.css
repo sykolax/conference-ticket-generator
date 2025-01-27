@@ -1,0 +1,90 @@
+:root {
+    --neutral0: 0, 0%, 100%;
+    --neutral300: 252, 6%, 83%;
+    --neutral500: 245, 15%, 58%;
+    --neutral700: 245, 19%, 35%;
+    --neutral900: 248, 70%, 10%;
+    --orange500: 7, 88%, 67%;
+    --orange700: 7, 71%, 60%;
+}
+
+* {
+    margin: 0;
+    /* box-sizing: border-box; */
+}
+
+html {
+    font-size: clamp(14px, 1.5vw, 20px);
+    color: hsl(var(--neutral0));
+}
+
+p {
+    color: hsl(var(--neutral300));
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    margin-block: clamp(10px, 4vh, 50px);
+}
+
+body {
+    font-family: "Inconsolata", sans-serif;
+    background-image:
+    url("assets/images/pattern-squiggly-line-bottom.svg"), 
+    url("assets/images/pattern-circle.svg"), 
+    url("assets/images/pattern-squiggly-line-top.svg"),
+    url("assets/images/pattern-lines.svg"), 
+    url("assets/images/background-desktop.png");
+    background-position: 
+    bottom 20% left -70%,
+    center right,
+    top 3% right,
+    top,
+    center;
+    background-size: 
+    90%,
+    40%,
+    35%,
+    cover, 
+    cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+@media (min-width: 600px) {
+
+    body {
+        background-size: 
+        50%,
+        20%,
+        30%,
+        cover,
+        cover;
+        background-position:
+        bottom 20% left -8%, 
+        top 50% right 20%,
+        top 5% right,
+        center, 
+        center;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    body {
+        background-size: 
+        45%,
+        15%,
+        30%,
+        cover,
+        cover;
+
+        background-position:
+        bottom 20% left -6%, 
+        top 60% right 22%,
+        top 5% right,
+        center, 
+        center;
+    }
+}
