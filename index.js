@@ -1,4 +1,4 @@
-const MAX_FILE_SIZE = 1000 * 600; //500kB
+const MAX_FILE_SIZE = 1000 * 500; //500kB
 
 const ticketForm = document.getElementById("ticketForm");
 
@@ -135,8 +135,6 @@ function processNewAvatar(file) {
 }
 
 function renderModifyButtons() {
-    // remove click event 
-    // fileDropZone.removeEventListener("click", triggerInputFile);
     isDropZoneActive = false;
 
     // class names for file modification
@@ -211,5 +209,3 @@ function renderTicket() {
     and will send updates in the run up to the event.`;
 
 }
-
-// TODO : 1) file type check 2) Submit button -> construct a user object 3) Highlight drop zone when drag over
