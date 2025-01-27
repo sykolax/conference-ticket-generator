@@ -10,14 +10,14 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="global-style.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="index.css" />
     <link rel="icon" href="assets/images/favicon-32x32.png" />
     <title>Coding Conf</title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo-mark.svg" alt="Coding conf logo" />
-      <h1>Coding Conf</h1>
+      <img src="assets/images/logo-full.svg" alt="Coding conf logo" />
+      <!-- <h1>Coding Conf</h1> -->
     </header>
     <main>
       <div class="content-header">
@@ -69,6 +69,41 @@
         <div class="form-group"></div>
         <input type="submit" id="submit" value="Generate My Ticket" />
       </form>
+      <div class="ticket">
+        <div class="ticket-main">
+          <div class="ticket-header">
+            <img
+              class="ticket-logo"
+              src="assets/images/logo-mark.svg"
+              alt="Conference logo"
+            />
+            <div class="ticket-conf-info">
+              <h3 class="ticket-title">Coding Conf</h3>
+              <p class="ticket-date">Jan 31, 2025 / Austin, TX</p>
+            </div>
+          </div>
+          <div class="ticket-user">
+            <img
+              id="ticket-avatar"
+              class="avatar-image"
+              src="assets/images/melody.jpeg"
+              alt="User Avatar"
+            />
+            <div class="ticket-github">
+              <h4 class="ticket-name">Melody Arausa</h4>
+              <div class="ticket-github-user">
+                <img src="assets/images/icon-github.svg" alt="Github icon" />
+                <p class="ticket-github-username">
+                  @<span>melodyarausa01</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ticket-footer">
+          <p class="user-num">#<span id="user-numid">01294</span></p>
+        </div>
+      </div>
     </main>
     <script src="index.js"></script>
   </body>
