@@ -1,4 +1,4 @@
-const MAX_FILE_SIZE = 1000 * 500; //500kB
+const MAX_FILE_SIZE = 1000 * 600; //500kB
 
 const ticketForm = document.getElementById("ticketForm");
 
@@ -54,8 +54,12 @@ submit.addEventListener('click', (event) => {
             errorMessages[index + 1].textContent = "";
             userInfo[infoKeys[index]] = value;
         }
-    
     });
+
+    if (Object.values(userInfo).every(value => value !== null)) {
+        console.log("hello!");
+        renderTicket();
+    }
 });
 
 fileDropZone.addEventListener('click', () => {
@@ -180,7 +184,32 @@ function displayAvatar(avatar) {
     avatarImg.src = avatar;
     avatarImg.classList.add('avatar-image');
     currentImg.replaceWith(avatarImg);
-    //current thing
+}
+
+function renderTicket() {
+    ticketForm.classList.add('none');
+    const ticket = document.querySelector(".ticket");
+    const image = document.querySelector("#ticket-avatar");
+    const name = document.querySelector(".ticket-name");
+    const githubUsername = document.querySelector(".ticket-github-username");
+
+    const mainMsg = document.querySelector(".content-header h2");
+    const helperMsg = document.querySelector(".content-header p");
+
+    ticket.classList.add('ticket-show');
+    image.src = userInfo["avatar"];
+    name.textContent = userInfo["name"];
+    githubUsername.textContent = userInfo["github"];
+
+    mainMsg.innerHTML = 
+    `Congrats, 
+    <span class="text-gradient">${userInfo["name"]}</span>! 
+    Your ticket is ready.`;
+    helperMsg.innerHTML = 
+    `We've emailed your ticket to
+    <span class="orange-text">${userInfo["email"]}</span> 
+    and will send updates in the run up to the event.`;
+
 }
 
 // TODO : 1) file type check 2) Submit button -> construct a user object 3) Highlight drop zone when drag over
